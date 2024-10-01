@@ -1,10 +1,10 @@
-//Create a typescript module with a class called Vacation, this class contains an ID, Title, Bodytext and a URL to a picture.
+//import * as React from 'react';
 
-export class Vacation {
-    id: number;
-    title: string;
-    bodyText: string;
-    pictureURL: string;
+class Vacation {
+    public id: number;
+    public title: string;
+    public bodyText: string;
+    public pictureURL: string;
 
     constructor(id: number, title: string, bodyText: string, pictureURL: string) {
         this.id = id;
@@ -13,3 +13,5 @@ export class Vacation {
         this.pictureURL = pictureURL;
     }
 }
+
+export { Vacation };

@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Vacation } from '../../shared/typescript/Vacation';
+import { VacationComp, Vacation, VacationProps, IVacation } from './components/VacationComp';
 
 import './App.css';
 
 function App() {
 
-  const [vacations, setVacations] = useState([{}]);
+  const [vacations, setVacations] = useState<[IVacation]>();
 
   useEffect(() => {
     //fetch('/api')
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('/api/vacations')
       .then(response => response.json())
       .then(data => setVacations(data));
   }, []);
 
   return (
     <div>
-      {typeof vacations === undefined ? (<p>Loading...</p>) :
-      (
-        <ul>
-            {vacations.map((vacation: any) => (
-            <li key={vacation.id}>
-                <h4>{vacation.id}</h4>
-                <h4>{vacation.title}</h4>
-                <h4>{vacation.body}</h4>
-                <h4>{vacation.pictureURL}</h4>
-            </li>
-          ))}
-        </ul>
-      )}
+      {typeof vacations === undefined ?
+        (<p>Loading...</p>)
+        :
+        (<> {vacations?.map((vacation: Vacation, _, __) => (<VacationComp vacation={vacation}></VacationComp>))} </>)}
     </div>
   );
 }

@@ -1,22 +1,20 @@
-{
-    "vacations": [
-        {
-            "id": 1,
-            "title": "Vacation 1",
-            "body": "An amazing moment for a vacations.",
-            "pictureURL": "http://localhost:5000/pictures/vacations/vacation1.jpg"
-        },
-        {
-            "id": 2,
-            "title": "Vacation 2",
-            "body": "Another amazing vacation experience.",
-            "pictureURL": "http://localhost:5000/pictures/vacations/vacation1.jpg"
-        },
-        {
-            "id": 3,
-            "title": "Vacation 3",
-            "body": "A truly special vacation.",
-            "pictureURL": "http://localhost:5000/pictures/vacations/vacation1.jpg"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "title": "Vacation 1",
+        "body": "An amazing moment for a vacations.",
+        "pictureURL": "http://localhost:5000/pictures/vacations/vacation1.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Vacation 2",
+        "body": "Another amazing vacation experience.",
+        "pictureURL": "http://localhost:5000/pictures/vacations/vacation1.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Vacation 3",
+        "body": "A truly special vacation.",
+        "pictureURL": "http://localhost:5000/pictures/vacations/vacation1.jpg"
+    }
+]
