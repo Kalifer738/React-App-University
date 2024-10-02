@@ -30,21 +30,22 @@ class Vacation implements IVacation {
 
 const VacationComp = ({ vacation, child }: VacationProps) => {
     if (vacation === undefined) {
-        return <>Missing Vacation Information.</>;
+        return <span>Missing Vacation Information.</span>;
     }
 
-   
+
 
     return (
-        <>
-            <div key={vacation.id} >
-                <span>{vacation.id}</span>
-                <span>{vacation.title}</span>
-                <span>{vacation.bodyText}</span>
-                <span>{vacation.pictureURL}</span>
+        <div className='card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg' style={{ "backgroundImage": `url("${vacation.pictureURL}")` }}>
+            <div className='d-flex flex-column h-100 text-white text-shadow-1'>
+                <div className='p-3 pb-0' key={vacation.id} >
+                    <h3 className='display-6 fw-bold'>{vacation.title}</h3>
+                    <span>{vacation.bodyText}</span>
+                    <span>{vacation.pictureURL}</span>
+                </div>
                 {child ? child : <></>}
-            </div >
-        </>
+            </div>
+        </div>
     )
 }
 

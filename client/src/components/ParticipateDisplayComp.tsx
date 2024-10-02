@@ -1,15 +1,17 @@
-import { useParams } from 'react-router-dom';
-import { VacationComp, Vacation, VacationProps, IVacation } from './VacationComp';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { VacationComp, Vacation } from './VacationComp';
 import * as React from 'react';
 
 export type ParticipateDisplayCompProp = {
     vacations: Array<Vacation> | undefined;
-    chosenVacationIndex: number;
+    chosenVacationId: number;
 }
 
-const ParticipateDisplayComp = ({ vacations }: ParticipateDisplayCompProp, { chosenVacationIndex }: ParticipateDisplayCompProp) => {
-    const params = useParams<'id'>();
+const ParticipateDisplayComp = ({ vacations }: ParticipateDisplayCompProp, { chosenVacationId }: ParticipateDisplayCompProp) => {
     
+    let [searchParams, _] = useSearchParams();
+    let paramId = searchParams.get('id');
+
     if(vacations === undefined || vacations.length === 0) {
         return (
             <div>
@@ -17,25 +19,17 @@ const ParticipateDisplayComp = ({ vacations }: ParticipateDisplayCompProp, { cho
             </div>
         );
     }
-
-    if(chosenVacationIndex == 0)
+    else if (chosenVacationId == 0 || chosenVacationId === undefined || chosenVacationId < 0 || chosenVacationId >= vacations.length)
     {
-        chosenVacationIndex = params.id? parseInt(params.id) : 0;
+        chosenVacationId = paramId ? parseInt(paramId) : 0;
     }
 
-
-
-    if(chosenVacationIndex < 0 || chosenVacationIndex >= vacations.length) {
-        return (
-            <div>
-                (<VacationComp vacation={vacations[0]} />)
-            </div>
-        )
-    }
+    let currentVacation = vacations.find(obj => obj.id === chosenVacationId);
 
     return (
-        <div>
-            (<VacationComp vacation={vacations[chosenVacationIndex]} />)
+        <div className='container-fluid px-4 py-5'>
+            <h2 className='pb-2 border-bottom'>Reserve {currentVacation?.title}</h2>
+            <VacationComp vacation={currentVacation} child={<div className='container-fluid mt-3 bg-black h-20'>asdasd<br /><br /><br /><br /></div>} />
         </div>
     )
 }
