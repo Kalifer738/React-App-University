@@ -1,11 +1,15 @@
 import express, { Express, Request, Response } from 'express';
 import * as fs from 'fs';
 import * as path from 'path';
-
+import cors from 'cors';
 
 const port = process.env.PORT || 5000;
-
 const app: Express = express();
+
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET']
+}));
 
 app.get("/api", (_: Request, res: Response) => {
     res.json({ vacations: ["test1", "test2", "test3"] });

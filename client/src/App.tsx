@@ -1,26 +1,29 @@
+import './App.css';
 import React, { useEffect, useState } from 'react';
 import { VacationComp, Vacation, VacationProps, IVacation } from './components/VacationComp';
+import { VacationDisplayComp } from './components/VacationDisplayComp';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavigationMenuComp from './components/NavigationMenuComp';
 
-import './App.css';
+
 
 function App() {
 
-  const [vacations, setVacations] = useState<[IVacation]>();
+  const [vacations, setVacations] = useState<Array<Vacation>>();
 
   useEffect(() => {
     //fetch('/api')
-    fetch('/api/vacations')
+    fetch('http://localhost:5000/api/vacations', { mode: 'cors' })
       .then(response => response.json())
       .then(data => setVacations(data));
   }, []);
 
   return (
-    <div>
-      {typeof vacations === undefined ?
-        (<p>Loading...</p>)
-        :
-        (<> {vacations?.map((vacation: Vacation, _, __) => (<VacationComp vacation={vacation}></VacationComp>))} </>)}
-    </div>
+    <>
+      <NavigationMenuComp>
+        <VacationDisplayComp vacations={vacations}></VacationDisplayComp>
+      </NavigationMenuComp>
+    </>
   );
 }
 
