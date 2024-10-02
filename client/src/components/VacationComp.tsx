@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useParams } from 'react-router-dom';
 import { inherits } from 'util';
 
 export interface IVacation {
@@ -8,8 +9,9 @@ export interface IVacation {
     pictureURL: string;
 }
 
-export type VacationProps ={
-    vacation: Vacation
+export type VacationProps = {
+    vacation: Vacation | undefined;
+    child?: React.ReactNode | undefined;
 }
 
 class Vacation implements IVacation {
@@ -26,14 +28,23 @@ class Vacation implements IVacation {
     }
 }
 
-const VacationComp = ({ vacation } : VacationProps) => {
+const VacationComp = ({ vacation, child }: VacationProps) => {
+    if (vacation === undefined) {
+        return <>Missing Vacation Information.</>;
+    }
+
+   
+
     return (
-        <div key={vacation.id}>
-            <span>{vacation.id}</span>
-            <span>{vacation.title}</span>
-            <span>{vacation.bodyText}</span>
-            <span>{vacation.pictureURL}</span>
-        </div>
+        <>
+            <div key={vacation.id} >
+                <span>{vacation.id}</span>
+                <span>{vacation.title}</span>
+                <span>{vacation.bodyText}</span>
+                <span>{vacation.pictureURL}</span>
+                {child ? child : <></>}
+            </div >
+        </>
     )
 }
 

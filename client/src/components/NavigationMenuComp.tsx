@@ -1,10 +1,10 @@
 import IntrinsicAttributes from 'react'
 
-export type NavigationMenuCompProp = {
-    children: Element
+type NavigationMenuCompProp = {
+    
 }
 
-const NavigationMenuComp = (children: IntrinsicAttributes) => {
+const NavigationMenuComp = () => {
     return (
         <div>
             <ul>
