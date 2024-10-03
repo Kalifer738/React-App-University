@@ -41,7 +41,6 @@ const VacationComp = ({ vacation, child }: VacationProps) => {
                 <div className='p-3 pb-0' key={vacation.id} >
                     <h3 className='display-6 fw-bold'>{vacation.title}</h3>
                     <span>{vacation.bodyText}</span>
-                    <span>{vacation.pictureURL}</span>
                 </div>
                 {child ? child : <></>}
             </div>

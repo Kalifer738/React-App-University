@@ -9,16 +9,16 @@ CREATE TABLE IF NOT EXISTS `Vacations` (
 
 CREATE TABLE IF NOT EXISTS `Users` (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username VARCHAR(64) NOT NULL,
+    userName VARCHAR(64) NOT NULL,
     telephone VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `Reservations` (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    userid INTEGER NOT NULL,
-    vacationid INTEGER NOT NULL,
+    id INTEGER PRIMARY KEY NOT NULL,
+    userId INTEGER NOT NULL,
+    vacationId INTEGER NOT NULL,
     active BOOLEAN NOT NULL,
-    requestcancellation BOOLEAN NOT NULL
-    FOREIGN KEY (vacationid) REFERENCES Vacations(id)
-    FOREIGN KEY (userid) REFERENCES Users(id)
+    requestCancellation BOOLEAN NOT NULL,
+    FOREIGN KEY (vacationId) REFERENCES Vacations(id),
+    FOREIGN KEY (userId) REFERENCES Users(id)
 );
