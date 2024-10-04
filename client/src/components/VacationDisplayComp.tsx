@@ -27,7 +27,9 @@ const VacationDisplayComp = ({ vacations }: VacationDisplayCompProp) => {
                         <VacationComp
                             key={index}
                             vacation={vacation}
-                            child={<Link className='btn btn-primary' state={{ "transform": "translateX(10px)" }} to={`/participate?id=${vacation.id}`}>Participate</Link>}
+                            child={
+                                <Link className='btn btn-primary' state={{ "transform": "translateX(10px)" }} to={`/participate?id=${vacation.id}`}>Participate</Link>
+                            }
                         />
                     </div>
                 ))}
